@@ -23,6 +23,7 @@ namespace SerialReceiver
                 Environment.Exit(0);
             }
 
+            // Initialization
             serial = new SerialPort(args[0], Convert.ToInt32(args[1]));
             Thread readThread = new Thread(Read);
 
@@ -35,12 +36,14 @@ namespace SerialReceiver
 
             Console.WriteLine("Type QUIT to exit");
 
+            // Allow users to quit the application nicely
             while (running) {
                 String message = Console.ReadLine();
                 if (stringComparer.Equals("quit", message))
                     running = false;
             }
 
+            // Clean up
             readThread.Join();
             serial.Close();
 

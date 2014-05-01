@@ -10,11 +10,21 @@ long debounceDelay = 50;
 
 void setup() {
   Serial.begin(9600);
+
+  /* We are not using external pullup resistors so we use an onboard
+   * pullup resistor to avoid any floating values
+   * We could also accomplish this with the following lines of code
+   * pinMode(buttonPin, INPUT);
+   * digitalWrite(buttonPin, HIGH);
+   */
   pinMode(buttonPin, INPUT_PULLUP);
   
 }
 
 void loop() {
+  /* The following code avoids button bouncing.
+   * See: www.arduino.cc/en/Tutorial/Debounce for more details
+   */
   int reading = digitalRead(buttonPin);
   
   if (reading != lastButtonState) {
@@ -25,7 +35,7 @@ void loop() {
     if (reading != buttonState) {
       buttonState = reading;
 
-      // only toggle the LED if the new button state is HIGH
+      // Only transmit the "toggle" command if the buttonState is LOW
       if (buttonState == LOW) {
         Serial.println("toggle");
       }
