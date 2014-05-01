@@ -19,7 +19,7 @@ An Arduino powered "Red Alert" Button for the game [Artemis Spaceship Bridge Sim
 ![Circuit Diagram](/Circuit/Diagram.png?raw=true)
 * Upload the Arduino Code (make note of the COM port used)
 * Assemble the Outlet Box
-* Download the latest release of SerialReceiver and run it with the following arguments
+* Download the [latest release](https://github.com/rohankapoorcom/Red-Alert-Button/releases/download/v1.0/SerialReceiver.zip) of SerialReceiver and run it with the following arguments
 	SerialReceiver.exe COMX 9600
 * Start Artemis and pick the Communications role
 
